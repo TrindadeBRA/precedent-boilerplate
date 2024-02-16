@@ -9,6 +9,7 @@ import {
 } from "react";
 import { LoadingDots, Google } from "@/components/shared/icons";
 import Image from "next/image";
+import Facebook from "../shared/icons/facebook";
 
 const SignInModal = ({
   showSignInModal,
@@ -61,6 +62,29 @@ const SignInModal = ({
               </>
             )}
           </button>
+
+          <button
+            disabled={signInClicked}
+            className={`${
+              signInClicked
+                ? "cursor-not-allowed border-gray-200 bg-gray-100"
+                : "border border-gray-200 bg-white text-black hover:bg-gray-50"
+            } flex h-10 w-full items-center justify-center space-x-3 rounded-md border text-sm shadow-sm transition-all duration-75 focus:outline-none`}
+            onClick={() => {
+              setSignInClicked(true);
+              signIn("facebook");
+            }}
+          >
+            {signInClicked ? (
+              <LoadingDots color="#808080" />
+            ) : (
+              <>
+                <Facebook className="h-5 w-5" />
+                <p>Sign In with Facebook</p>
+              </>
+            )}
+          </button>
+
         </div>
       </div>
     </Modal>
